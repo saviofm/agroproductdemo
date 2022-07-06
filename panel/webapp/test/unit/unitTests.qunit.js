@@ -5,7 +5,7 @@ sap.ui.getCore().attachInit(function () {
 	"use strict";
 
 	sap.ui.require([
-		"comslc/panel/test/unit/AllTests"
+		"comagroproductdemo/panel/test/unit/AllTests"
 	], function () {
 		QUnit.start();
 	});

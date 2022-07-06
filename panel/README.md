@@ -1,7 +1,7 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Wed Jul 06 2022 15:40:42 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Wed Jul 06 2022 16:25:26 GMT+0000 (Coordinated Universal Time)|
 |**App Generator**<br>@sap/generator-fiori-freestyle|
 |**App Generator Version**<br>1.6.4|
 |**Generation Platform**<br>SAP Business Application Studio|
@@ -9,16 +9,16 @@
 |**Service Type**<br>None|
 |**Service URL**<br>N/A
 |**Module Name**<br>panel|
-|**Application Title**<br>App Title|
-|**Namespace**<br>com.slc|
-|**UI5 Theme**<br>sap_fiori_3|
+|**Application Title**<br>Panel|
+|**Namespace**<br>com.agroproductdemo|
+|**UI5 Theme**<br>sap_horizon|
 |**UI5 Version**<br>1.102.1|
 |**Enable Code Assist Libraries**<br>False|
 |**Add Eslint configuration**<br>False|
 
 ## panel
 
-A Fiori application.
+Comparison Panel
 
 ### Starting the generated app
 

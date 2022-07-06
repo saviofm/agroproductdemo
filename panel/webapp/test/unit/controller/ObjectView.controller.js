@@ -1,7 +1,7 @@
 /*global QUnit*/
 
 sap.ui.define([
-	"comslc/panel/controller/ObjectView.controller"
+	"comagroproductdemo/panel/controller/ObjectView.controller"
 ], function (Controller) {
 	"use strict";
 

@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.slc.panel.controller.ObjectView"
+<mvc:View controllerName="com.agroproductdemo.panel.controller.ObjectView"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">

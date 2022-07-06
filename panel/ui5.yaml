@@ -2,7 +2,7 @@
 
 specVersion: "2.5"
 metadata:
-  name: com.slc.panel
+  name: com.agroproductdemo.panel
 type: application
 server:
   customMiddleware:
@@ -27,5 +27,5 @@ server:
     - name: fiori-tools-preview
       afterMiddleware: fiori-tools-appreload
       configuration:
-        component: com.slc.panel
-        ui5Theme: sap_fiori_3
+        component: com.agroproductdemo.panel
+        ui5Theme: sap_horizon

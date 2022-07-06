@@ -1,7 +1,7 @@
 {
     "_version": "1.40.0",
     "sap.app": {
-        "id": "com.slc.panel",
+        "id": "com.agroproductdemo.panel",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -13,7 +13,7 @@
         "sourceTemplate": {
             "id": "@sap-ux/fiori-freestyle-writer:basic",
             "version": "0.11.15",
-            "toolsId": "b91c63f3-749d-45c2-b66a-4dd2a5b2708a"
+            "toolsId": "bff2e890-67ce-4a8c-93e5-797d358f0e93"
         },
         "dataSources": {
             "mainService": {
@@ -28,13 +28,13 @@
         },
         "crossNavigation": {
             "inbounds": {
-                "com-slc-panel-inbound": {
+                "com-agroproductdemo-panel-inbound": {
                     "signature": {
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "MATERIAL",
-                    "action": "PANEL",
+                    "semanticObject": "PANEL",
+                    "action": "MANAGE",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
                     "icon": ""
@@ -81,7 +81,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "com.slc.panel.i18n.i18n"
+                    "bundleName": "com.agroproductdemo.panel.i18n.i18n"
                 }
             },
             "": {
@@ -102,7 +102,7 @@
                 "routerClass": "sap.m.routing.Router",
                 "viewType": "XML",
                 "async": true,
-                "viewPath": "com.slc.panel.view",
+                "viewPath": "com.agroproductdemo.panel.view",
                 "controlAggregation": "pages",
                 "controlId": "app",
                 "clearControlAggregation": false
@@ -127,7 +127,7 @@
             }
         },
         "rootView": {
-            "viewName": "com.slc.panel.view.App",
+            "viewName": "com.agroproductdemo.panel.view.App",
             "type": "XML",
             "async": true,
             "id": "App"

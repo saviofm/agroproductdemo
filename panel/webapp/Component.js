@@ -1,12 +1,12 @@
 sap.ui.define([
         "sap/ui/core/UIComponent",
         "sap/ui/Device",
-        "com/slc/panel/model/models"
+        "com/agroproductdemo/panel/model/models"
     ],
     function (UIComponent, Device, models) {
         "use strict";
 
-        return UIComponent.extend("com.slc.panel.Component", {
+        return UIComponent.extend("com.agroproductdemo.panel.Component", {
             metadata: {
                 manifest: "json"
             },

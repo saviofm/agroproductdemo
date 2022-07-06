@@ -7,7 +7,7 @@ sap.ui.define([
 
 	Opa5.extendConfig({
 		arrangements: new Startup(),
-		viewNamespace: "com.slc.panel.view.",
+		viewNamespace: "com.agroproductdemo.panel.view.",
 		autoWait: true
 	});
 });

@@ -39,8 +39,8 @@ sap.ui.define([
 							"tiles": [{
 								"tileType": "sap.ushell.ui.tile.StaticTile",
 								"properties": {
-									"title": "App Title",
-									"targetURL": "#comslcpanel-display"
+									"title": "Panel",
+									"targetURL": "#comagroproductdemopanel-display"
 								}
 							}]
 						}]
@@ -51,18 +51,18 @@ sap.ui.define([
 				"adapter": {
 					"config": {
 						"inbounds": {
-							"comslcpanel-display": {
-								"semanticObject": "comslcpanel",
+							"comagroproductdemopanel-display": {
+								"semanticObject": "comagroproductdemopanel",
 								"action": "display",
-								"description": "A Fiori application.",
-								"title": "App Title",
+								"description": "Comparison Panel",
+								"title": "Panel",
 								"signature": {
 									"parameters": {}
 								},
 								"resolutionResult": {
 									"applicationType": "SAPUI5",
-									"additionalInformation": "SAPUI5.Component=com.slc.panel",
-									"url": sap.ui.require.toUrl("com/slc/panel")
+									"additionalInformation": "SAPUI5.Component=com.agroproductdemo.panel",
+									"url": sap.ui.require.toUrl("com/agroproductdemo/panel")
 								}
 							}
 						}

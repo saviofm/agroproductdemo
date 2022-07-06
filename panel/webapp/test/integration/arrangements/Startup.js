@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (Opa5) {
 	"use strict";
 
-	return Opa5.extend("com.slc.panel.test.integration.arrangements.Startup", {
+	return Opa5.extend("com.agroproductdemo.panel.test.integration.arrangements.Startup", {
 
 		iStartMyApp: function (oOptionsParameter) {
 			var oOptions = oOptionsParameter || {};
@@ -14,7 +14,7 @@ sap.ui.define([
 			// start the app UI component
 			this.iStartMyUIComponent({
 				componentConfig: {
-					name: "com.slc.panel",
+					name: "com.agroproductdemo.panel",
 					async: true
 				},
 				hash: oOptions.hash,

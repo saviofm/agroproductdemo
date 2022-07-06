@@ -7,7 +7,7 @@ sap.ui.define([
     function (Controller) {
         "use strict";
 
-        return Controller.extend("com.slc.panel.controller.ObjectView", {
+        return Controller.extend("com.agroproductdemo.panel.controller.ObjectView", {
             onInit: function () {
 
             }

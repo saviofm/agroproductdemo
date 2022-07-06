@@ -1,23 +1,23 @@
 _schema-version: "3.2"
-ID: com-slc-panel
-description: A Fiori application.
+ID: com-agroproductdemo-panel
+description: Comparison Panel
 version: 0.0.1
 modules:
-- name: com-slc-panel-app-content
+- name: com-agroproductdemo-panel-app-content
   type: com.sap.application.content
   path: .
   requires:
-  - name: com-slc-panel-repo-host
+  - name: com-agroproductdemo-panel-repo-host
     parameters:
       content-target: true
   build-parameters:
     build-result: resources
     requires:
     - artifacts:
-      - comslcpanel.zip
-      name: comslcpanel
+      - comagroproductdemopanel.zip
+      name: comagroproductdemopanel
       target-path: resources/
-- name: comslcpanel
+- name: comagroproductdemopanel
   type: html5
   path: .
   build-parameters:
@@ -28,13 +28,13 @@ modules:
     - npm run build:cf
     supported-platforms: []
 resources:
-- name: com-slc-panel-repo-host
+- name: com-agroproductdemo-panel-repo-host
   type: org.cloudfoundry.managed-service
   parameters:
     service: html5-apps-repo
-    service-name: com-slc-panel-html5-srv
+    service-name: com-agroproductdemo-panel-html5-srv
     service-plan: app-host
-- name: com-slc-panel-destination-service
+- name: com-agroproductdemo-panel-destination-service
   type: org.cloudfoundry.managed-service
   parameters:
     config:
@@ -50,7 +50,7 @@ resources:
           existing_destinations_policy: update
       version: 1.0.0
     service: destination
-    service-name: com-slc-panel-destination-service
+    service-name: com-agroproductdemo-panel-destination-service
     service-plan: lite
 parameters:
   deploy_mode: html5-repo
