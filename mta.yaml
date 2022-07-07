@@ -1,0 +1,180 @@
+_schema-version: "3.1"
+ID: agroproductdemo
+description: A simple CAP project.
+version: 1.0.1
+parameters:
+  ###deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm install --production
+    - npx -p @sap/cds-dk cds build --production
+
+
+# ----------------------------------------------------------------
+# ----------------------------------------------------------------
+# ----------------------------MODULES-----------------------------
+# ----------------------------------------------------------------
+# ----------------------------------------------------------------
+modules:
+
+# --------------------- CAP SERVER MODULE ------------------------
+- name: agroproductdemo-srv
+# ----------------------------------------------------------------
+  type: nodejs
+  path: gen/srv
+  properties:
+    SAP_JWT_TRUST_ACL: '[{"clientid":"*","identityzone":"*"}]'
+  requires:
+  # Resources extracted from CAP configuration
+  - name: agroproductdemo-db
+  - name: agroproductdemo-xsuaa-service
+  - name: agroproductdemo-destination-service
+    parameters:
+      content-target: true
+  provides:
+  - name: srv-api # required by consumers of CAP services (e.g. approuter)
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+    disk-quota: 1024M
+    memory: 512M
+
+# -------------- SIDECAR MODULE - DB DEPLOYER----------------- 
+- name: agroproductdemo-db-deployer
+# ------------------------------------------------------------
+  type: hdb
+  path: gen/db
+  requires:
+  - name: agroproductdemo-db
+  parameters:
+    buildpack: nodejs_buildpack
+
+# -------------------- HTML5 Content ----------------------
+- name: agroproductdemo-destination-content
+# ---------------------------------------------------------
+  type: com.sap.application.content
+  requires:
+  - name: agroproductdemo-xsuaa-service
+    parameters:
+      service-key:
+        name: agroproductdemo_xsuaa-key
+  - name: agroproductdemo-html5-host
+    parameters:
+      service-key:
+        name: agroproductdemo_html5_host-key
+  - name: agroproductdemo-destination-service
+    parameters:
+      content-target: true        
+  parameters:
+    content:
+      subaccount:
+        destinations:
+        - Name: agroproductdemo_html5_host
+          ServiceInstanceName: agroproductdemo-html5-host-service
+          ServiceKeyName: agroproductdemo_html5_host-key
+          sap.cloud.service: agroproductdemo
+        - Authentication: OAuth2UserTokenExchange
+          Name: agroproductdemo_xsuaa
+          ServiceInstanceName: agroproductdemo-xsuaa-service
+          ServiceKeyName: agroproductdemo_xsuaa-key
+          sap.cloud.service: agroproductdemo
+        existing_destinations_policy: update    
+  build-parameters:
+    no-source: true
+
+# -------------- UI DEPLOYER MODULE - APP CONTENT ------------
+- name: agroproductdemo-ui-deployer
+# ------------------------------------------------------------
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: agroproductdemo-html5-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - agroproductdemoappmatrix.zip
+      name: agroproductdemoappmatrix
+      target-path: resources/
+
+# --------------------- HTML5 MODULE -------------------------
+- name: agroproductdemoappmatrix
+# ------------------------------------------------------------
+  type: html5
+  path: app/matrix
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm run build:cf
+    supported-platforms: []
+    
+# ----------------------------------------------------------------
+# ----------------------------------------------------------------
+# ---------------------------RESOURCES----------------------------
+# ----------------------------------------------------------------
+# ----------------------------------------------------------------
+resources:
+
+# --------------------- DB - HDI CONTAINER------------------------
+- name: agroproductdemo-db
+# ----------------------------------------------------------------
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+  properties:
+    hdi-service-name: ${service-name}
+
+# ------------------------ XSUAA Service -------------------------  
+- name: agroproductdemo-xsuaa-service
+# ----------------------------------------------------------------
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: agroproductdemo-xsuaa-service
+    service-plan: application
+
+# ----------------- Destination Service -------------------   
+- name: agroproductdemo-destination-service
+# ---------------------------------------------------------
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      ##HTML5Runtime_enabled: true
+      init_data:
+        subaccount:
+          destinations:
+          - Authentication: NoAuthentication
+            Description: CAP Objectstore Destination Service
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            HTML5.Timeout: 300000
+            Name: agroproductdemo
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}  
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: agroproductdemo-destination-service
+    service-plan: lite
+  requires:
+  - name: srv-api
+
+# ---------------------- HTML5 Host -------------------------
+- name: agroproductdemo-html5-host
+# -----------------------------------------------------------
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: agroproductdemo-html5-host-service
+    service-plan: app-host
+

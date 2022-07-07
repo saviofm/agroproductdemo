@@ -1,0 +1,94 @@
+_schema-version: "3.2"
+ID: agroproductdemo-app-matrix
+description: Product Substitution Matrix
+version: 0.0.1
+modules:
+- name: agroproductdemo-app-matrix-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: agroproductdemo-app-matrix-destination-service
+    parameters:
+      content-target: true
+  - name: agroproductdemo-app-matrix-repo-host
+    parameters:
+      service-key:
+        name: agroproductdemo-app-matrix-repo-host-key
+  - name: agroproductdemo-app-matrix-uaa
+    parameters:
+      service-key:
+        name: agroproductdemo-app-matrix-uaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: agroproductdemo-app-matrix_html_repo_host
+          ServiceInstanceName: agroproductdemo-app-matrix-html5-srv
+          ServiceKeyName: agroproductdemo-app-matrix-repo-host-key
+          sap.cloud.service: agroproductdemo-app-matrix
+        - Authentication: OAuth2UserTokenExchange
+          Name: agroproductdemo-app-matrix_uaa
+          ServiceInstanceName: agroproductdemo-app-matrix-xsuaa-srv
+          ServiceKeyName: agroproductdemo-app-matrix-uaa-key
+          sap.cloud.service: agroproductdemo-app-matrix
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: agroproductdemo-app-matrix-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: agroproductdemo-app-matrix-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - agroproductdemoappmatrix.zip
+      name: agroproductdemoappmatrix
+      target-path: resources/
+- name: agroproductdemoappmatrix
+  type: html5
+  path: .
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: agroproductdemo-app-matrix-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: agroproductdemo-app-matrix-destination-service
+    service-plan: lite
+- name: agroproductdemo-app-matrix-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: agroproductdemo-app-matrix-xsuaa-srv
+    service-plan: application
+- name: agroproductdemo-app-matrix-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: agroproductdemo-app-matrix-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
