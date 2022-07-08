@@ -17,7 +17,7 @@
         },
         "dataSources": {
             "mainService": {
-                "uri": "/catalog/",
+                "uri": "catalog/",
                 "type": "OData",
                 "settings": {
                     "annotations": [
@@ -50,6 +50,10 @@
                 }
             }
         }
+    },
+    "sap.cloud": {
+        "service": "agroproductdemo",
+        "public": true
     },
     "sap.ui": {
         "technology": "UI5",
