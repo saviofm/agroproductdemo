@@ -352,7 +352,7 @@ annotate Pragas with @(
 
 
 
-//----------------------- culturas  ---------------------//
+//----------------------- Culturas  ---------------------//
 //------------------------------------------------------//
 //------------------------------------------------------//
 //Entity
@@ -362,7 +362,7 @@ entity Culturas: cuid, managed {
 
 //Annotation
 annotate Culturas with @(
-    title              : '{i18n>culturas}',
+    title              : '{i18n>Culturas}',
     description        : nomeCultura,
     UI.TextArrangement : #TextOnly,
     cds.odata.valuelist,
@@ -380,9 +380,9 @@ annotate Culturas with @(
         }
     );
 
-    nomeculturas @(
-        title       : '{i18n>nomeculturas}',
-        description : '{i18n>nomeculturas}',
+    nomecultura @(
+        title       : '{i18n>nomeCultura}',
+        description : '{i18n>nomeCultura}',
         Common      : {
             FieldControl             : #Mandatory,
             TextFor                  : ID
