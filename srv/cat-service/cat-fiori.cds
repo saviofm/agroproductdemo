@@ -274,12 +274,12 @@ annotate CatalogService.ProdutoPragas with @(
         HeaderInfo: {         
             Title: {
                 $Type : 'UI.DataField',
-                Value : '{i18n>Composicao}'
+                Value : '{i18n>Pragas}'
             },    
-            TypeName       : '{i18n>Composicao}',
-            TypeNamePlural : '{i18n>Composicao}',
+            TypeName       : '{i18n>Pragas}',
+            TypeNamePlural : '{i18n>Pragas}',
             Description    : {
-                Value : '{i18n>Composicao}'
+                Value : '{i18n>Pragas}'
             }
         },    
         FieldGroup #Details : {

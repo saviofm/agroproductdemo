@@ -307,8 +307,8 @@ annotate ProdutoPragas with {
 //------------------------------------------------------//
 //Entity
 entity Pragas: cuid, managed {
-    nomePraga : String not null;
-    nomePragaCientifico: String not null;
+    nomePraga : String(30) not null;
+    nomePragaCientifico: String(30) not null;
 }
 
 //Annotation
@@ -357,7 +357,7 @@ annotate Pragas with @(
 //------------------------------------------------------//
 //Entity
 entity Culturas: cuid, managed {
-    nomeCultura: String not null;
+    nomeCultura: String(20) not null;
 }
 
 //Annotation
