@@ -139,7 +139,8 @@ annotate CatalogService.Composicao with @(
             {   
                 $Type             : 'UI.DataField',
                 Value             : principioAtivo.nomePrincipioAtivoComum,
-                ![@UI.Importance] : #High
+                ![@UI.Importance] : #High,
+                ![@Common.FieldControl] : #ReadOnly,
             },
             {   
                 $Type             : 'UI.DataField',
@@ -180,12 +181,14 @@ annotate CatalogService.Composicao with @(
                 {
                     $Type : 'UI.DataField',
                     Value : principioAtivo.nomePrincipioAtivo,
-                    ![@UI.Importance] : #High
+                    ![@UI.Importance] : #High,
+                    ![@Common.FieldControl] : #ReadOnly,
                 },      
                 {
                     $Type : 'UI.DataField',
                     Value : principioAtivo.nomePrincipioAtivoComum,
-                    ![@UI.Importance] : #High
+                    ![@UI.Importance] : #High,
+                    ![@Common.FieldControl] : #ReadOnly,
                 },
                 {
                     $Type : 'UI.DataField',
@@ -237,7 +240,8 @@ annotate CatalogService.ProdutoPragas with @(
             {   
                 $Type             : 'UI.DataField',
                 Value             : praga.nomePragaCientifico,
-                ![@UI.Importance] : #High
+                ![@UI.Importance] : #High,
+                ![@Common.FieldControl] : #ReadOnly,
             },
             {   
                 $Type             : 'UI.DataField',
@@ -293,7 +297,8 @@ annotate CatalogService.ProdutoPragas with @(
                 {
                     $Type : 'UI.DataField',
                     Value : praga.nomePragaCientifico,
-                    ![@UI.Importance] : #High
+                    ![@UI.Importance] : #High,
+                    ![@Common.FieldControl] : #ReadOnly,
                 },
                 {
                     $Type : 'UI.DataField',

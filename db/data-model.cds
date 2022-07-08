@@ -380,7 +380,7 @@ annotate Culturas with @(
         }
     );
 
-    nomecultura @(
+    nomeCultura @(
         title       : '{i18n>nomeCultura}',
         description : '{i18n>nomeCultura}',
         Common      : {
