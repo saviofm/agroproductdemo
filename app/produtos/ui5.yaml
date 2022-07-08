@@ -1,4 +1,4 @@
 specVersion: "2.5"
 metadata:
-  name: agroproductdemo.produtos
+  name: agroproductdemo.app.produtos
 type: application

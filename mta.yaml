@@ -104,16 +104,20 @@ modules:
       target-path: resources/
     - artifacts:      
       - agroproductdemoapppragas.zip
-      name: agroproductdemoappmatrix
+      name: agroproductdemoapppragas
       target-path: resources/
     - artifacts:      
       - agroproductdemoappculturas.zip
-      name: agroproductdemoappmatrix
+      name: agroproductdemoappculturas
       target-path: resources/
     - artifacts:      
       - agroproductdemoappprincipiosativos.zip
-      name: agroproductdemoappmatrix
+      name: agroproductdemoappprincipiosativos
       target-path: resources/                  
+    - artifacts:      
+      - agroproductdemoappprodutos.zip
+      name: agroproductdemoappprodutos
+      target-path: resources/ 
 
 # --------------------- HTML5 MODULE -------------------------
 - name: agroproductdemoappmatrix
@@ -156,6 +160,18 @@ modules:
 # ------------------------------------------------------------
   type: html5
   path: app/principiosativos
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm run build:cf
+    supported-platforms: [] 
+
+# --------------------- HTML5 MODULE -------------------------
+- name: agroproductdemoappprodutos
+# ------------------------------------------------------------
+  type: html5
+  path: app/produtos
   build-parameters:
     build-result: dist
     builder: custom

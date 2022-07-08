@@ -101,13 +101,7 @@
     }
   },
   "sapux": [
-    "app/airport",
-    "app/partnertype",
-    "app/declaracao",
-    "app/package",
-    "app/airline",
-    "app/partner",
-    "app/preparcel",
+    "app/matrix",
     "app/pragas",
     "app/culturas",
     "app/principiosativos",

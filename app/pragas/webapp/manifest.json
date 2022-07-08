@@ -46,7 +46,7 @@
                     "action": "MANAGE",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
-                    "icon": ""
+                    "icon": "sap-icon://BusinessSuiteInAppSymbols/icon-immunization"
                 }
             }
         }

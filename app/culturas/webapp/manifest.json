@@ -42,11 +42,11 @@
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "culturas",
+                    "semanticObject": "CULTURAS",
                     "action": "CREATE",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
-                    "icon": ""
+                    "icon": "sap-icon://BusinessSuiteInAppSymbols/icon-products"
                 }
             }
         }
@@ -116,42 +116,42 @@
             "routes": [
                 {
                     "pattern": ":?query:",
-                    "name": "culturasList",
-                    "target": "culturasList"
+                    "name": "CulturasList",
+                    "target": "CulturasList"
                 },
                 {
-                    "pattern": "culturas({key}):?query:",
-                    "name": "culturasObjectPage",
-                    "target": "culturasObjectPage"
+                    "pattern": "Culturas({key}):?query:",
+                    "name": "CulturasObjectPage",
+                    "target": "CulturasObjectPage"
                 }
             ],
             "targets": {
-                "culturasList": {
+                "CulturasList": {
                     "type": "Component",
-                    "id": "culturasList",
+                    "id": "CulturasList",
                     "name": "sap.fe.templates.ListReport",
                     "options": {
                         "settings": {
-                            "entitySet": "culturas",
+                            "entitySet": "Culturas",
                             "variantManagement": "Page",
                             "navigation": {
-                                "culturas": {
+                                "Culturas": {
                                     "detail": {
-                                        "route": "culturasObjectPage"
+                                        "route": "CulturasObjectPage"
                                     }
                                 }
                             }
                         }
                     }
                 },
-                "culturasObjectPage": {
+                "CulturasObjectPage": {
                     "type": "Component",
-                    "id": "culturasObjectPage",
+                    "id": "CulturasObjectPage",
                     "name": "sap.fe.templates.ObjectPage",
                     "options": {
                         "settings": {
                             "editableHeaderContent": false,
-                            "entitySet": "culturas"
+                            "entitySet": "Culturas"
                         }
                     }
                 }

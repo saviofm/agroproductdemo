@@ -1,7 +1,7 @@
 {
     "_version": "1.40.0",
     "sap.app": {
-        "id": "agroproductdemo.produtos",
+        "id": "agroproductdemo.app.produtos",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -17,7 +17,7 @@
         },
         "dataSources": {
             "mainService": {
-                "uri": "/catalog/",
+                "uri": "catalog/",
                 "type": "OData",
                 "settings": {
                     "annotations": [
@@ -46,10 +46,14 @@
                     "action": "MANAGE",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
-                    "icon": ""
+                    "icon": "sap-icon://BusinessSuiteInAppSymbols/icon-raw-material"
                 }
             }
         }
+    },
+    "sap.cloud": {
+        "service": "agroproductdemo",
+        "public": true
     },
     "sap.ui": {
         "technology": "UI5",
@@ -86,7 +90,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "agroproductdemo.produtos.i18n.i18n"
+                    "bundleName": "agroproductdemo.app.produtos.i18n.i18n"
                 }
             },
             "": {
