@@ -44,7 +44,8 @@
     "watch-preparcel": "cds watch --open preparcel/webapp/index.html#fe-lrop-v4",
     "watch-pragas": "cds watch --open pragas/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-culturas": "cds watch --open culturas/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-principiosativos": "cds watch --open principiosativos/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-principiosativos": "cds watch --open principiosativos/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-produtos": "cds watch --open produtos/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -109,6 +110,7 @@
     "app/preparcel",
     "app/pragas",
     "app/culturas",
-    "app/principiosativos"
+    "app/principiosativos",
+    "app/produtos"
   ]
 }
