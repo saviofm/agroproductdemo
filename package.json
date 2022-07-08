@@ -43,8 +43,8 @@
     "watch-partner": "cds watch --open partner/webapp/index.html#fe-lrop-v4",
     "watch-preparcel": "cds watch --open preparcel/webapp/index.html#fe-lrop-v4",
     "watch-pragas": "cds watch --open pragas/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-cultura": "cds watch --open cultura/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-principioativo": "cds watch --open principioativo/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-culturas": "cds watch --open culturas/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-principiosativos": "cds watch --open principiosativos/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -108,7 +108,7 @@
     "app/partner",
     "app/preparcel",
     "app/pragas",
-    "app/cultura",
-    "app/principioativo"
+    "app/culturas",
+    "app/principiosativos"
   ]
 }

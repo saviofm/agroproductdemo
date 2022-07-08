@@ -15,7 +15,7 @@ namespace agroproductdemo;
 //------------------------------------------------------//
 //------------------------------------------------------//
 //Entity
-entity Produto: cuid, managed {
+entity Produtos: cuid, managed {
     cdProduto: String;
     nomeProduto: String;
     composicao: Composition of many Composicao on composicao.produto = $self;
@@ -24,8 +24,8 @@ entity Produto: cuid, managed {
 }
 
 //Annotation
-annotate Produto  @(
-    title              : '{i18n>Produto}',
+annotate Produtos  @(
+    title              : '{i18n>Produtos}',
     description        : nomeProduto,
     UI.TextArrangement : #TextOnly,
     cds.odata.valuelist,
@@ -77,8 +77,8 @@ annotate Produto  @(
 //------------------------------------------------------//
 //Entity
 entity Composicao: cuid {
-    produto: Association to Produto;
-    principioAtivo: Association to PrincipioAtivo;
+    produto: Association to Produtos;
+    principioAtivo: Association to PrincipiosAtivos;
     qtdGL: Decimal(15,2) ;
     perMassa: Decimal(15,2);
 }
@@ -117,7 +117,7 @@ annotate Composicao with {
         Common.ValueListWithFixedValues : false,
         title                           : '{i18n>principioAtivo}',
         Common.ValueList                : {
-            CollectionPath : 'PrincipioAtivo',
+            CollectionPath : 'PrincipiosAtivos',
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
@@ -126,7 +126,7 @@ annotate Composicao with {
                 },  
                 {
                     $Type             : 'Common.ValueListParameterDisplayOnly',
-                    ValueListProperty : 'nomePrincipioAtivoComum'
+                    ValueListProperty : 'nomePrincipiosAtivosComum'
                 }           
             ]
         }
@@ -142,18 +142,18 @@ annotate Composicao with {
 };
 
 
-//------------------- PrincipioAtivo  -------------------//
+//------------------- PrincipiosAtivos  -------------------//
 //------------------------------------------------------//
 //------------------------------------------------------//
 //Entity
-entity PrincipioAtivo: cuid, managed {
+entity PrincipiosAtivos: cuid, managed {
     nomePrincipioAtivo: String;
     nomePrincipioAtivoComum: String
 }
 
 //Annotation
-annotate PrincipioAtivo with @(
-    title              : '{i18n>PrincipioAtivo}',
+annotate PrincipiosAtivos with @(
+    title              : '{i18n>PrincipiosAtivos}',
     description        : nomePrincipioAtivo,
     UI.TextArrangement : #TextOnly,
     cds.odata.valuelist,
@@ -194,8 +194,8 @@ annotate PrincipioAtivo with @(
 //------------------------------------------------------//
 //Entity
 entity ProdutoPragas: cuid, managed {
-    produto: Association to Produto;
-    cultura: Association to Cultura;
+    produto: Association to Produtos;
+    cultura: Association to Culturas;
     praga: Association to Pragas;
     doseMin: Decimal(13,2);
     doseMax: Decimal(13,2);
@@ -237,7 +237,7 @@ annotate ProdutoPragas with {
         Common.ValueListWithFixedValues : false,
         title                           : '{i18n>Praga}',
         Common.ValueList                : {
-            CollectionPath : 'Cultura',
+            CollectionPath : 'culturas',
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
@@ -352,17 +352,17 @@ annotate Pragas with @(
 
 
 
-//----------------------- Cultura  ---------------------//
+//----------------------- culturas  ---------------------//
 //------------------------------------------------------//
 //------------------------------------------------------//
 //Entity
-entity Cultura: cuid, managed {
+entity Culturas: cuid, managed {
     nomeCultura: String not null;
 }
 
 //Annotation
-annotate Cultura with @(
-    title              : '{i18n>Cultura}',
+annotate Culturas with @(
+    title              : '{i18n>culturas}',
     description        : nomeCultura,
     UI.TextArrangement : #TextOnly,
     cds.odata.valuelist,
@@ -380,9 +380,9 @@ annotate Cultura with @(
         }
     );
 
-    nomeCultura @(
-        title       : '{i18n>nomeCultura}',
-        description : '{i18n>nomeCultura}',
+    nomeculturas @(
+        title       : '{i18n>nomeculturas}',
+        description : '{i18n>nomeculturas}',
         Common      : {
             FieldControl             : #Mandatory,
             TextFor                  : ID

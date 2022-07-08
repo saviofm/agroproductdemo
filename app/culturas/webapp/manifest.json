@@ -1,7 +1,7 @@
 {
     "_version": "1.40.0",
     "sap.app": {
-        "id": "agroproductdemo.app.cultura",
+        "id": "agroproductdemo.app.culturas",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -37,12 +37,12 @@
         },
         "crossNavigation": {
             "inbounds": {
-                "agroproductdemo-app-cultura-inbound": {
+                "agroproductdemo-app-culturas-inbound": {
                     "signature": {
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "CULTURA",
+                    "semanticObject": "culturas",
                     "action": "CREATE",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
@@ -90,7 +90,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "agroproductdemo.app.cultura.i18n.i18n"
+                    "bundleName": "agroproductdemo.app.culturas.i18n.i18n"
                 }
             },
             "": {
@@ -116,42 +116,42 @@
             "routes": [
                 {
                     "pattern": ":?query:",
-                    "name": "CulturaList",
-                    "target": "CulturaList"
+                    "name": "culturasList",
+                    "target": "culturasList"
                 },
                 {
-                    "pattern": "Cultura({key}):?query:",
-                    "name": "CulturaObjectPage",
-                    "target": "CulturaObjectPage"
+                    "pattern": "culturas({key}):?query:",
+                    "name": "culturasObjectPage",
+                    "target": "culturasObjectPage"
                 }
             ],
             "targets": {
-                "CulturaList": {
+                "culturasList": {
                     "type": "Component",
-                    "id": "CulturaList",
+                    "id": "culturasList",
                     "name": "sap.fe.templates.ListReport",
                     "options": {
                         "settings": {
-                            "entitySet": "Cultura",
+                            "entitySet": "culturas",
                             "variantManagement": "Page",
                             "navigation": {
-                                "Cultura": {
+                                "culturas": {
                                     "detail": {
-                                        "route": "CulturaObjectPage"
+                                        "route": "culturasObjectPage"
                                     }
                                 }
                             }
                         }
                     }
                 },
-                "CulturaObjectPage": {
+                "culturasObjectPage": {
                     "type": "Component",
-                    "id": "CulturaObjectPage",
+                    "id": "culturasObjectPage",
                     "name": "sap.fe.templates.ObjectPage",
                     "options": {
                         "settings": {
                             "editableHeaderContent": false,
-                            "entitySet": "Cultura"
+                            "entitySet": "culturas"
                         }
                     }
                 }

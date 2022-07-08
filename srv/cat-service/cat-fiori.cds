@@ -7,7 +7,7 @@ using CatalogService from './cat-service';
 //------------------------------------------------------//
 //------------------------------------------------------//
 //List Page
-annotate CatalogService.Produto with @(
+annotate CatalogService.Produtos with @(
 	UI: {
         LineItem: [
 			{   
@@ -341,7 +341,7 @@ annotate CatalogService.ProdutoPragas with @(
 //------------------------------------------------------//
 //------------------------------------------------------//
 //List Page
-annotate CatalogService.PrincipioAtivo with @(
+annotate CatalogService.PrincipiosAtivos with @(
 	UI: {
         LineItem: [
 			{   
@@ -369,10 +369,10 @@ annotate CatalogService.PrincipioAtivo with @(
         HeaderInfo: {          
             Title : { 
                 $Type : 'UI.DataField',
-                Value: '{i18n>PrincipioAtivo}'
+                Value: '{i18n>PrincipiosAtivos}'
             },
-            TypeName: '{i18n>PrincipioAtivo}',
-            TypeNamePlural: '{i18n>PrincipioAtivo}', 
+            TypeName: '{i18n>PrincipiosAtivos}',
+            TypeNamePlural: '{i18n>PrincipiosAtivos}', 
             Description: { 
                 $Type: 'UI.DataField', 
                 Value: ID 
@@ -523,11 +523,11 @@ annotate CatalogService.Pragas with @(
 
 
 
-//----------------------- Cultura  ---------------------//
+//----------------------- Culturas  ---------------------//
 //------------------------------------------------------//
 //------------------------------------------------------//
 //List Page
-annotate CatalogService.Cultura with @(
+annotate CatalogService.Culturas with @(
 	UI: {
         LineItem: [
 			{   
@@ -549,9 +549,9 @@ annotate CatalogService.Cultura with @(
         HeaderInfo: {          
             Title : { 
                 $Type : 'UI.DataField',
-                Value: '{i18n>Cultura}'
+                Value: '{i18n>Culturas}'
             },
-            TypeName: '{i18n>Cultura}',
+            TypeName: '{i18n>Culturas}',
             TypeNamePlural: '{i18n>Culturas}', 
             Description: { 
                 $Type: 'UI.DataField', 

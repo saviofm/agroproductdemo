@@ -1,7 +1,7 @@
 {
     "_version": "1.40.0",
     "sap.app": {
-        "id": "agroproductdemo.app.principioativo",
+        "id": "agroproductdemo.app.principiosativos",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -37,7 +37,7 @@
         },
         "crossNavigation": {
             "inbounds": {
-                "agroproductdemo-app-principioativo-inbound": {
+                "agroproductdemo-app-principiosativos-inbound": {
                     "signature": {
                         "parameters": {},
                         "additionalParameters": "allowed"
@@ -90,7 +90,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "agroproductdemo.app.principioativo.i18n.i18n"
+                    "bundleName": "agroproductdemo.app.principiosativos.i18n.i18n"
                 }
             },
             "": {
@@ -116,42 +116,42 @@
             "routes": [
                 {
                     "pattern": ":?query:",
-                    "name": "PrincipioAtivoList",
-                    "target": "PrincipioAtivoList"
+                    "name": "PrincipiosAtivosList",
+                    "target": "PrincipiosAtivosList"
                 },
                 {
-                    "pattern": "PrincipioAtivo({key}):?query:",
-                    "name": "PrincipioAtivoObjectPage",
-                    "target": "PrincipioAtivoObjectPage"
+                    "pattern": "PrincipiosAtivos({key}):?query:",
+                    "name": "PrincipiosAtivosObjectPage",
+                    "target": "PrincipiosAtivosObjectPage"
                 }
             ],
             "targets": {
-                "PrincipioAtivoList": {
+                "PrincipiosAtivosList": {
                     "type": "Component",
-                    "id": "PrincipioAtivoList",
+                    "id": "PrincipiosAtivosList",
                     "name": "sap.fe.templates.ListReport",
                     "options": {
                         "settings": {
-                            "entitySet": "PrincipioAtivo",
+                            "entitySet": "PrincipiosAtivos",
                             "variantManagement": "Page",
                             "navigation": {
-                                "PrincipioAtivo": {
+                                "PrincipiosAtivos": {
                                     "detail": {
-                                        "route": "PrincipioAtivoObjectPage"
+                                        "route": "PrincipiosAtivosObjectPage"
                                     }
                                 }
                             }
                         }
                     }
                 },
-                "PrincipioAtivoObjectPage": {
+                "PrincipiosAtivosObjectPage": {
                     "type": "Component",
-                    "id": "PrincipioAtivoObjectPage",
+                    "id": "PrincipiosAtivosObjectPage",
                     "name": "sap.fe.templates.ObjectPage",
                     "options": {
                         "settings": {
                             "editableHeaderContent": false,
-                            "entitySet": "PrincipioAtivo"
+                            "entitySet": "PrincipiosAtivos"
                         }
                     }
                 }
