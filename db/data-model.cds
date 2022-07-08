@@ -235,9 +235,9 @@ annotate ProdutoPragas with {
             ![@UI.TextArrangement] : #TextOnly
         },
         Common.ValueListWithFixedValues : false,
-        title                           : '{i18n>Praga}',
+        title                           : '{i18n>Cultura}',
         Common.ValueList                : {
-            CollectionPath : 'culturas',
+            CollectionPath : 'Culturas',
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
