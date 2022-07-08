@@ -1,7 +1,7 @@
 {
     "_version": "1.40.0",
     "sap.app": {
-        "id": "agroproductdemo.app.matrix",
+        "id": "agroproductdemo.app.pragas",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -11,33 +11,33 @@
         "description": "{{appDescription}}",
         "resources": "resources.json",
         "sourceTemplate": {
-            "id": "@sap-ux/fiori-freestyle-writer:basic",
-            "version": "0.11.15",
-            "toolsId": "4d5853af-1bc9-4e40-952e-c1ef4f6bd932"
+            "id": "@sap-ux/fiori-elements-writer:lrop",
+            "version": "0.3.6",
+            "toolsId": "e93323ce-2d69-48ea-83f5-b058481ccf08"
         },
         "dataSources": {
             "mainService": {
-                "uri": "v2/catalog",
+                "uri": "catalog/",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
                     "localUri": "localService/metadata.xml",
-                    "odataVersion": "2.0"
+                    "odataVersion": "4.0"
                 }
             }
         },
         "crossNavigation": {
             "inbounds": {
-                "agroproductdemo-app-matrix-inbound": {
+                "agroproductdemo-app-pragas-inbound": {
                     "signature": {
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "MATRIX",
-                    "action": "DISPLAY",
+                    "semanticObject": "PRAGAS",
+                    "action": "MANAGE",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
-                    "icon": "sap-icon://SAP-icons-TNT/value-mapping"
+                    "icon": ""
                 }
             }
         }
@@ -69,12 +69,8 @@
             "libs": {
                 "sap.m": {},
                 "sap.ui.core": {},
-                "sap.f": {},
-                "sap.suite.ui.generic.template": {},
-                "sap.ui.comp": {},
-                "sap.ui.generic.app": {},
-                "sap.ui.table": {},
-                "sap.ushell": {}
+                "sap.ushell": {},
+                "sap.fe.templates": {}
             }
         },
         "contentDensities": {
@@ -85,7 +81,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "agroproductdemo.app.matrix.i18n.i18n"
+                    "bundleName": "agroproductdemo.app.pragas.i18n.i18n"
                 }
             },
             "": {
@@ -107,39 +103,54 @@
             "css": []
         },
         "routing": {
-            "config": {
-                "routerClass": "sap.m.routing.Router",
-                "viewType": "XML",
-                "async": true,
-                "viewPath": "agroproductdemo.app.matrix.view",
-                "controlAggregation": "pages",
-                "controlId": "app",
-                "clearControlAggregation": false
-            },
+            "config": {},
             "routes": [
                 {
-                    "name": "RouteMatrix",
                     "pattern": ":?query:",
-                    "target": [
-                        "TargetMatrix"
-                    ]
+                    "name": "PragasList",
+                    "target": "PragasList"
+                },
+                {
+                    "pattern": "Pragas({key}):?query:",
+                    "name": "PragasObjectPage",
+                    "target": "PragasObjectPage"
                 }
             ],
             "targets": {
-                "TargetMatrix": {
-                    "viewType": "XML",
-                    "transition": "slide",
-                    "clearControlAggregation": false,
-                    "viewId": "Matrix",
-                    "viewName": "Matrix"
+                "PragasList": {
+                    "type": "Component",
+                    "id": "PragasList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Pragas",
+                            "variantManagement": "Page",
+                            "navigation": {
+                                "Pragas": {
+                                    "detail": {
+                                        "route": "PragasObjectPage"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "PragasObjectPage": {
+                    "type": "Component",
+                    "id": "PragasObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "entitySet": "Pragas"
+                        }
+                    }
                 }
             }
-        },
-        "rootView": {
-            "viewName": "agroproductdemo.app.matrix.view.App",
-            "type": "XML",
-            "async": true,
-            "id": "App"
         }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
     }
 }

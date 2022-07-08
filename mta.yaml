@@ -114,6 +114,17 @@ modules:
     commands:
     - npm run build:cf
     supported-platforms: []
+# --------------------- HTML5 MODULE -------------------------
+- name: agroproductdemoapppragas
+# ------------------------------------------------------------
+  type: html5
+  path: app/pragas
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm run build:cf
+    supported-platforms: []   
     
 # ----------------------------------------------------------------
 # ----------------------------------------------------------------
