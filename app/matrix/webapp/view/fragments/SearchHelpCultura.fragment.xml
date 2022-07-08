@@ -1,0 +1,37 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+    <TableSelectDialog
+        id="demoTable"
+		title="{i18n>demoTitle}"
+		search="onSearchDemo"
+        confirm="onPressDemo"
+		cancel="onCloseDemo"
+		items="{
+			path : '/DemoCreate'
+		}"
+    >
+        <columns>
+            <Column id="tableDemo" width="100%">
+                <Label text="{i18n>demoName}"/>
+            </Column>
+            <Column id="tableImage" width="100%">
+                <Label text="{i18n>Image}"/>
+            </Column>
+            <Column id="tableDemoDescription" width="100%">
+                <Label text="{i18n>DemoDescription}"/>
+            </Column>
+        </columns>
+
+        <ColumnListItem
+            type="Navigation"
+        >
+            <cells>
+                <Text text="{demoName}"/>
+                <Image src="{__metadata/media_src}"/>
+                <Text text="{demoDescription}"/>
+            </cells>
+        </ColumnListItem>
+    </TableSelectDialog>
+</core:FragmentDefinition>

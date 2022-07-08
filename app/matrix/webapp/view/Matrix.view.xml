@@ -1,7 +1,120 @@
-<mvc:View controllerName="agroproductdemo.app.matrix.controller.Matrix"
+<mvc:View controllerName="agroproductdemo.app.matrix.controller.Matrix" 
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
-    </Page>
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:core="sap.ui.core"
+>
+    <semantic:SemanticPage
+        id="page"
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false">
+
+        <semantic:titleHeading>
+            <Title id="matrixTitle"
+                text="{i18n>MatrixSubstituicao}"/>
+        </semantic:titleHeading>
+
+        <semantic:headerContent>
+
+        </semantic:headerContent>
+
+
+         <semantic:content>
+            <l:VerticalLayout id="vLayout" width="100%">
+                <Panel 
+                    id="Panel1"
+                    expandable="false"
+                    expanded="true"
+                    headerText="{i18n>Produto}"
+                    width="auto"
+                    backgroundDesign="Translucent"
+                    class="sapUiSmallMarginBottom"
+                > 
+                    <f:SimpleForm id="SimpleFormSchedule"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="4"
+                        labelSpanL="3"
+                        labelSpanM="4"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="0"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        emptySpanS="0"
+                        columnsXL="2"
+                        columnsL="2"
+                        columnsM="2"
+                        singleContainerFullSize="true"
+                    >
+                        <f:content>
+                            <Label id="labelCdProduto" text="{i18n>cdProduto}"/>
+                            <Input
+                                id="cdProduto"                 
+                                required="true" 
+                                value="{matrixView>/cdProduto}"
+                                showSuggestion="true"
+                                showValueHelp="true"
+                                valueHelpRequest="onValueHelpRequestCdProduto"
+                                suggestionItems="{
+                                    path: '/ProdutosCrud',
+                                    templateShareable: false
+                                }"
+                                change="onChangeCdProduto">
+                                <suggestionItems>
+                                    <core:Item id="itemCdProduto" text="{i18n>cdProduto}" />
+                                </suggestionItems>
+                            </Input>
+                            <Label id="labelNomeProduto" text="{i18n>nomeProduto}"/>
+                            <Input
+                                id="nomeProduto"
+                                value="{matrixView>/nomeProduto}"
+                                visible="true"
+                                enabled="false"
+                            />
+                            <Label id= "labelObsProduto" text="{i18n>obsProduto}"/>
+                             <TextArea
+                                id="obsProduto"
+                                value="{matrixView>/obsProduto}"
+                                visible="true"
+                                enabled="false"
+                            /> 
+                        </f:content>      
+                    </f:SimpleForm>          
+                </Panel>  
+                <Panel 
+                    id="Panel2"
+                    expandable="{device>/system/phone}"
+                    expanded="true"
+                    headerText="{i18n>Substitutos}"
+                    width="auto"
+                    backgroundDesign="Translucent"
+                    class="sapUiSmallMarginBottom"
+                > 
+                    <f:SimpleForm id="SubstitutosFormSchedule"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="4"
+                        labelSpanL="3"
+                        labelSpanM="4"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="0"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        emptySpanS="0"
+                        columnsXL="2"
+                        columnsL="2"
+                        columnsM="2"
+                        singleContainerFullSize="true"
+                    >
+                        <f:content>
+                        </f:content>      
+                    </f:SimpleForm>          
+                </Panel>  
+            </l:VerticalLayout>
+         </semantic:content>
+    </semantic:SemanticPage>
 </mvc:View>

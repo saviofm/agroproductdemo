@@ -98,6 +98,12 @@
                     "earlyRequests": true
                 }
             },
+            "appView": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "matrixView": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
             "@i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "uri": "i18n/i18n.properties"

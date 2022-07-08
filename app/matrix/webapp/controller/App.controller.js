@@ -7,7 +7,8 @@ sap.ui.define(
   
       return BaseController.extend("agroproductdemo.app.matrix.controller.controller.App", {
         onInit() {
-        }
+          
+        }      
       });
     }
   );
