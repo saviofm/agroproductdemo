@@ -5,9 +5,12 @@
     xmlns:f="sap.ui.layout.form"
     xmlns:semantic="sap.f.semantic"
     xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
 >
     <semantic:SemanticPage
         id="page"
+        busy="{appView>/busy}"
+        busyIndicatorDelay="{appView>/delay}"
         headerPinnable="false"
         toggleHeaderOnTitleClick="false">
 
@@ -58,6 +61,10 @@
                                 showSuggestion="true"
                                 showValueHelp="true"
                                 valueHelpRequest="onValueHelpRequestCdProduto"
+                                visible="{matrixView>/State/cdProduto/Visible}"
+                                enabled="{matrixView>/State/cdProduto/Enabled}"
+                                valueState="{matrixView>/State/cdProduto/ValueState}"
+                                valueStateText="{matrixView>/State/cdProduto/ValueStateText}"
                                 suggestionItems="{
                                     path: '/ProdutosCrud',
                                     templateShareable: false
@@ -92,6 +99,7 @@
                     width="auto"
                     backgroundDesign="Translucent"
                     class="sapUiSmallMarginBottom"
+                    visible="{matrixView>/Matrix/visible}"
                 > 
                     <f:SimpleForm id="SubstitutosFormSchedule"
                         editable="true"
@@ -111,6 +119,135 @@
                         singleContainerFullSize="true"
                     >
                         <f:content>
+                            <table:Table 
+                                id="MatrixComposicao"
+                                ariaLabelledBy="{i18n>Composicao}"
+                                rows="{matrixView>/Matrix/composicaoItem}"
+                                width="100%"
+                                visibleRowCount="{matrixView>/Matrix/rows}"
+                                selectionMode="None"
+                                enableColumnFreeze="true"
+				                showColumnVisibilityMenu="true"
+                               >
+                                <table:columns>
+                                    <table:Column
+                                        width="11rem"
+                                        sortProperty="nomePrincipioAtivo"
+                                        filterProperty="nomePrincipioAtivo"
+                                        autoResizable="true"
+                                        sortOrder="Ascending"
+                                        headerSpan="9,1">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Composicao}" textAlign="Center" width="100%"/>
+                                            <Label text=""/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col1}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>nomePrincipioAtivo}" wrapping="false"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="qtdGL1"
+                                        filterProperty="qtdGL1"
+                                        headerSpan="9,2">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Composicao}"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col2}" textAlign="Center" width="100%"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col2_1}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>qtdGL1}" wrapping="false"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="perMassa1"
+                                        filterProperty="perMassa1">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Composicao}"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col2}"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col2_2}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>perMassa1}" wrapping="false"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="qtdGL2"
+                                        filterProperty="qtdGL2"
+                                        headerSpan="9,2">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Composicao}"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col3}" textAlign="Center" width="100%"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col3_1}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>qtdGL2}" wrapping="false"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="perMassa2"
+                                        filterProperty="perMassa2">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Composicao}"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col3}"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col3_2}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>perMassa2}" wrapping="false"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="qtdGL3"
+                                        filterProperty="qtdGL3"
+                                        headerSpan="9,2">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Composicao}"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col4}" textAlign="Center" width="100%"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col4_1}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>qtdGL3}" wrapping="false"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="perMassa3"
+                                        filterProperty="perMassa3">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Composicao}"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col4}"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col4_2}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>perMassa3}" wrapping="false"/>
+                                        </table:template>
+                                    </table:Column>  
+                                    <table:Column
+                                        sortProperty="qtdGL4"
+                                        filterProperty="qtdGL4"
+                                        headerSpan="9,2">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Composicao}"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col5}" textAlign="Center" width="100%"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col5_1}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>qtdGL4}" wrapping="false"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="perMassa4"
+                                        filterProperty="perMassa4">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Composicao}"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col5}"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col5_2}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>perMassa4}" wrapping="false" textAlign="Center" width="100%"/>
+                                        </table:template>
+                                    </table:Column>    
+                                </table:columns>
+                            </table:Table>
                         </f:content>      
                     </f:SimpleForm>          
                 </Panel>  

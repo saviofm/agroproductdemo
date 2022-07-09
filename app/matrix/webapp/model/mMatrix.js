@@ -9,7 +9,11 @@ sap.ui.define([
           cdProduto: "",
           nomeProduto: "",
           obsProduto: "",
-          Matrix: [],
+          Matrix: {
+            visible: false,
+            composicaoHeader: {},
+            composicaoItem: {}
+          },
           State: {
             cdProduto: {
               Enabled: true,

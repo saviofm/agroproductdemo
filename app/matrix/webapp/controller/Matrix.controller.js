@@ -106,40 +106,94 @@ function (Controller, UIComponent, mMatrix, Fragment, Filter, FilterOperator) {
             if(!sInputValue) {
                
                 oModel.State.cdProduto.ValueState     = sap.ui.core.ValueState.Error;
-                oModel.State.cdProduto.ValueStateText = this.getResourceBundle().getText("validationRequiredField");
+                oModel.State.cdProduto.ValueStateText = this._getResourceBundle().getText("validationRequiredField");
                 oModel.ID           = "";
                 oModel.nomeProduto  = "";
                 oModel.obsProduto   = "";
+                oModel.Matrix.composicaoHeader = {};
+                oModel.Matrix.composicaoItem   = {};
+                oModel.Matrix.rows = 0;
+                oModel.Matrix.visible = false;
             } else {
                 oModel.State.cdProduto.ValueState     = sap.ui.core.ValueState.None;
                 oModel.State.cdProduto.ValueStateText = "";
                 oModel.ID           = "";
                 oModel.nomeProduto  = "";
                 oModel.obsProduto   = "";
+                oModel.Matrix.composicaoHeader = {};
+                oModel.Matrix.composicaoItem   = {};
+                oModel.Matrix.rows = 0;
+                oModel.Matrix.visible = false;
                 this.onValueHelpRequestCdProduto(oEvent);
             }
             
             this.getModel("matrixView").refresh(true);
         },
 
-        onPressCdProduct: function(oEvent){
+        onPressCdProduct: async function(oEvent){
             let oObjectProdutos = oEvent.getParameters().selectedItems[0].getBindingContext().getObject(),
                 oModel          = this.getModel("matrixView").getData();
-
+            this.setAppBusy(true);
             oModel.ID = oObjectProdutos.ID;
             oModel.cdProduto   = oObjectProdutos.cdProduto;
             oModel.nomeProduto = oObjectProdutos.nomeProduto;
             oModel.obsProduto  = oObjectProdutos.obsProduto;
-            
             oModel.State.cdProduto.ValueState     = sap.ui.core.ValueState.None;
             oModel.State.cdProduto.ValueStateText = "";
+
+            await this._buildMatrix(oModel);
+            //Buscar a function import de comparação
             this.getModel("matrixView").refresh(true);
+            this.setAppBusy(false);
         },
 
-        onCloseCdProduct: function(oEvent){},
+        onCloseCdProduct: function(oEvent){
+            
+        },
 
 
-
+        /* =========================================================== */
+        /* internal methods                                            */
+        /* =========================================================== */
+                /**
+         * Getter for the resource bundle.
+         * @public
+         * @returns {sap.ui.model.resource.ResourceModel} the resourceModel of the component
+         */
+        _getResourceBundle : function () {
+            return this.getModel("i18n").getResourceBundle();
+        },
+        _buildMatrix: async function(oModel){
+            debugger;
+            let oMatrix = await this._getMatrix(oModel.ID);
+            if (oMatrix) {
+                oModel.Matrix.composicaoHeader = oMatrix.composicaoHeader;
+                oModel.Matrix.composicaoItem   = oMatrix.composicaoItem;
+                oModel.Matrix.rows             = oMatrix.rows;
+                oModel.Matrix.visible = true;
+            }
+        },
+        
+        _getMatrix: function(productID){
+            return new Promise(
+               (resolve)=>{
+                    //Check if has already a schedule in the desiredDate
+                    this.getModel().callFunction('/getMatrix', {
+                        method: 'GET',
+                        urlParameters: {
+                            ID: productID
+                        },
+                        success: function(res) {
+                            resolve(JSON.parse(res.getMatrix));
+                        }.bind(this),
+                        error: function(error) {
+                            console.error(error);
+                            resolve(false);
+                        }.bind(this)
+                    })
+                }
+            );
+        },
         _filtersTableProdutos: function(sValue){
             return new Filter({
                 and: false,

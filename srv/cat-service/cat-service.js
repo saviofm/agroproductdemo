@@ -231,8 +231,9 @@ class CatalogService extends cds.ApplicationService {
                 }
 
                 return JSON.stringify({
-                    ComposicaoHeader: composicaoHeader,
-                    ComposicaoItem:   aComposicaoItem
+                    composicaoHeader: composicaoHeader,
+                    composicaoItem:   aComposicaoItem,
+                    rows: aComposicaoItem.length
                 });
                   
                 
