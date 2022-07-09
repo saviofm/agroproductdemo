@@ -62,6 +62,7 @@ service CatalogService {
     entity CulturasCrud as projection on agroproductdemo.Culturas;  
 
 
-    function getMatrix(ID: String) returns {};
+    function getMatrix(ID: String) returns String;
+
 
 }

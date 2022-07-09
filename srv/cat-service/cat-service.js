@@ -230,11 +230,13 @@ class CatalogService extends cds.ApplicationService {
                     }
                 }
 
-
-                return { 
+                let oMatrix = {
                     ComposicaoHeader: composicaoHeader,
-                    ComposicaoItem:   composicaoItem
-                };
+                    ComposicaoItem:   aComposicaoItem
+                }
+                return JSON.stringify(oMatrix);
+                   
+                
                 
             } catch (error) {
                 return false;
