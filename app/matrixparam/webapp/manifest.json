@@ -1,0 +1,151 @@
+{
+    "_version": "1.40.0",
+    "sap.app": {
+        "id": "agroproductdemo.app.matrixparam",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap-ux/fiori-freestyle-writer:basic",
+            "version": "0.11.15",
+            "toolsId": "4d5853af-1bc9-4e40-952e-c1ef4f6bd932"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "v2/catalog",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "agroproductdemo-app-matrixparam-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "MATRIX",
+                    "action": "PARAM",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": "sap-icon://SAP-icons-TNT/value-mapping"
+                }
+            }
+        }
+    },
+    "sap.cloud": {
+        "service": "agroproductdemo",
+        "public": true
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.102.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "agroproductdemo.app.matrixparam.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "appView": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "matrixParamView": {
+                "type": "sap.ui.model.json.JSONModel"
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "agroproductdemo.app.matrixparam.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteMatrix",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetMatrix"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetMatrix": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Matrix",
+                    "viewName": "Matrix"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "agroproductdemo.app.matrixparam.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

@@ -1,0 +1,39 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+>
+    <TableSelectDialog
+        id="produtosTable"
+		title="{i18n>Produtos}"
+		search="onSearchCdProduct"
+        confirm="onPressCdProduct"
+		cancel="onCloseCdProduct"
+		items="{
+			path : '/ProdutosCrud'
+		}"
+    >
+        <columns>
+            <Column id="tableCdProduto" width="100%">
+                <Label text="{i18n>cdProduto}"/>
+            </Column>
+            <Column id="tableNomeProduto" width="100%">
+                <Label text="{i18n>nomeProduto}"/>
+            </Column>
+            <Column id="tableObsProduto" width="100%">
+                <Label text="{i18n>obsProduto}"/>
+            </Column>
+        </columns>
+
+        <ColumnListItem
+            type="Navigation"
+            press="onPressOpportunityID"
+        >
+            <cells>
+                <Text text="{cdProduto}"/>
+                <Text text="{nomeProduto}"/>
+                <Text text="{obsProduto}"/>
+
+            </cells>
+        </ColumnListItem>
+    </TableSelectDialog>
+</core:FragmentDefinition>

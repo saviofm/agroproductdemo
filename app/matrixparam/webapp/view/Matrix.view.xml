@@ -1,0 +1,223 @@
+<mvc:View controllerName="agroproductdemo.app.matrixparam.controller.Matrix" 
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+>
+    <semantic:SemanticPage
+        id="page"
+        busy="{appView>/busy}"
+        busyIndicatorDelay="{appView>/delay}"
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false">
+
+        <semantic:titleHeading>
+            <Title id="matrixParamTitle"
+                text="{i18n>MatrixParametrizacao}"/>
+        </semantic:titleHeading>
+
+        <semantic:headerContent>
+
+        </semantic:headerContent>
+
+
+         <semantic:content>
+         	<IconTabBar
+                id="idIconTabBarInlineMode"
+                headerMode="Inline"
+                expanded="{device>/isNoPhone}"
+                class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter
+                        text="Parâmetros Algorítmo"
+                        key="param">
+                    <l:VerticalLayout id="vLayout" width="100%">
+                        <Panel 
+                            id="Panel1"
+                            expandable="false"
+                            expanded="true"
+                            headerText="Atributos a Considerar"
+                            width="auto"
+                            backgroundDesign="Translucent"
+                            class="sapUiSmallMarginBottom"
+                        > 
+                            <f:SimpleForm id="SimpleFormSchedule"
+                                editable="true"
+                                layout="ResponsiveGridLayout"
+                                labelSpanXL="4"
+                                labelSpanL="3"
+                                labelSpanM="4"
+                                labelSpanS="12"
+                                adjustLabelSpan="false"
+                                emptySpanXL="2"
+                                emptySpanL="2"
+                                emptySpanM="2"
+                                emptySpanS="2"
+                                columnsXL="1"
+                                columnsL="1"
+                                columnsM="1"
+                                singleContainerFullSize="true"
+                            >
+                                <f:content>
+                                    <VBox class="sapUiMediumMarginEnd">
+                                        <CheckBox text="Composição" selected="true" />
+                                        <CheckBox text="Pragas" selected="true"/>
+                                    </VBox>
+                                </f:content>      
+                            </f:SimpleForm>          
+                        </Panel> 
+                        <Panel 
+                            id="Panel2"
+                            expandable="false"
+                            expanded="true"
+                            headerText="Confiança"
+                            width="auto"
+                            backgroundDesign="Translucent"
+                            class="sapUiSmallMarginBottom"
+                        > 
+                            <f:SimpleForm id="SimpleFormSchedule2"
+                                editable="true"
+                                layout="ResponsiveGridLayout"
+                                labelSpanXL="4"
+                                labelSpanL="3"
+                                labelSpanM="4"
+                                labelSpanS="12"
+                                adjustLabelSpan="false"
+                                emptySpanXL="2"
+                                emptySpanL="2"
+                                emptySpanM="2"
+                                emptySpanS="2"
+                                columnsXL="1"
+                                columnsL="1"
+                                columnsM="1"
+                                singleContainerFullSize="true"
+                            >
+                                <f:content>
+                                    <VBox class="sapUiMediumMarginEnd">
+                                        <Label text="Considerar Substituição a partir de" labelFor="groupA" />
+                                        <RadioButtonGroup id="groupA">
+                                            <RadioButton text="25% de compatibilidade " selected="true"/>
+                                            <RadioButton text="50% de compatibilidade"/>
+                                            <RadioButton text="75% de compatibilidade"/>
+                                            <RadioButton text="90% de compatibilidade" />
+                                        </RadioButtonGroup>
+                                    </VBox>
+                                </f:content>      
+                            </f:SimpleForm>          
+                        </Panel>  
+                    </l:VerticalLayout>	
+                    </IconTabFilter>
+                    <IconTabFilter
+                        text="Execução Algorítmo"
+                        key="exec">		
+                        <l:VerticalLayout id="vLayout2" width="100%">
+                            <Panel 
+                                id="Panel3"
+                                expandable="false"
+                                expanded="true"
+                                headerText="Atributos a Considerar"
+                                width="auto"
+                                backgroundDesign="Translucent"
+                                class="sapUiSmallMarginBottom"
+                            > 
+                                <f:SimpleForm id="SimpleFormSchedule3"
+                                    editable="true"
+                                    layout="ResponsiveGridLayout"
+                                    labelSpanXL="4"
+                                    labelSpanL="3"
+                                    labelSpanM="4"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="2"
+                                    emptySpanL="2"
+                                    emptySpanM="2"
+                                    emptySpanS="2"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="true"
+                                >
+                                    <f:content>
+                                    <VBox class="sapUiMediumMarginEnd">
+                                        <Label text="Tipo de Execução" labelFor="groupA" />
+                                        <RadioButtonGroup id="groupB">
+                                            <RadioButton text="Execução Total" selected="true"/>
+                                            <RadioButton text="Somente Delta"/>
+                                        </RadioButtonGroup>
+                                    </VBox>
+                                    </f:content>      
+                                </f:SimpleForm>          
+                            </Panel> 
+                            <Panel 
+                                id="Panel4"
+                                expandable="false"
+                                expanded="true"
+                                headerText="Envio"
+                                width="auto"
+                                backgroundDesign="Translucent"
+                                class="sapUiSmallMarginBottom"
+                            > 
+                                <f:SimpleForm id="SimpleFormSchedule4"
+                                    editable="true"
+                                    layout="ResponsiveGridLayout"
+                                    labelSpanXL="4"
+                                    labelSpanL="3"
+                                    labelSpanM="4"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="2"
+                                    emptySpanL="2"
+                                    emptySpanM="2"
+                                    emptySpanS="2"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="true"
+                                >
+                                    <f:content>
+                                    <VBox class="sapUiMediumMarginEnd">
+                                        <CheckBox text="Enviar Para SAP IBP" selected="true" />
+                                    </VBox>
+                                    </f:content>      
+                                </f:SimpleForm>          
+                            </Panel> 
+                            <Panel 
+                                id="Panel5"
+                                expandable="false"
+                                expanded="true"
+                                width="auto"
+                                backgroundDesign="Translucent"
+                                class="sapUiSmallMarginBottom"
+                            > 
+                                <f:SimpleForm id="SimpleFormSchedule5"
+                                    editable="true"
+                                    layout="ResponsiveGridLayout"
+                                    labelSpanXL="4"
+                                    labelSpanL="3"
+                                    labelSpanM="4"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="2"
+                                    emptySpanL="2"
+                                    emptySpanM="2"
+                                    emptySpanS="2"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="true"
+                                >
+                                    <f:content>
+                                        <Button type="Emphasized" text="Executar"  press="onPress" icon="sap-icon://process"/>
+                                    </f:content>      
+                                </f:SimpleForm>          
+                            </Panel> 
+                        </l:VerticalLayout>		
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </semantic:content>
+    </semantic:SemanticPage>
+</mvc:View>

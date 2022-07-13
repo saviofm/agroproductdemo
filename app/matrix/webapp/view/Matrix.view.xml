@@ -69,7 +69,8 @@
                                     path: '/ProdutosCrud',
                                     templateShareable: false
                                 }"
-                                change="onChangeCdProduto">
+                                change="onChangeCdProduto"
+                                valueHelpOnly="true">
                                 <suggestionItems>
                                     <core:Item id="itemCdProduto" text="{i18n>cdProduto}" />
                                 </suggestionItems>
@@ -119,44 +120,45 @@
                         singleContainerFullSize="true"
                     >
                         <f:content>
+                        <l:VerticalLayout width="100%">
                             <table:Table 
                                 id="MatrixComposicao"
                                 ariaLabelledBy="{i18n>Composicao}"
                                 rows="{matrixView>/Matrix/composicaoItem}"
                                 width="100%"
-                                visibleRowCount="{matrixView>/Matrix/rows}"
+                                visibleRowCount="{matrixView>/Matrix/composicaoRows}"
                                 selectionMode="None"
                                 enableColumnFreeze="true"
 				                showColumnVisibilityMenu="true"
                                >
                                 <table:columns>
                                     <table:Column
-                                        width="11rem"
+                                        width="17rem"
                                         sortProperty="nomePrincipioAtivo"
                                         filterProperty="nomePrincipioAtivo"
                                         autoResizable="true"
                                         sortOrder="Ascending"
-                                        headerSpan="9,1">
+                                        headerSpan="{matrixView>/Matrix/composicaoSpan1}">
                                         <table:multiLabels>
                                             <Label text="{i18n>Composicao}" textAlign="Center" width="100%"/>
                                             <Label text=""/>
-                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col1}" textAlign="Center" width="100%"/>
+                                            <Label text="{matrixView>/Matrix/composicaoHeader/Col1}" textAlign="Center" />
                                         </table:multiLabels>
                                         <table:template>
-                                            <Text text="{matrixView>nomePrincipioAtivo}" wrapping="false"/>
+                                            <Text text="{matrixView>nomePrincipioAtivo}" wrapping="false" />
                                         </table:template>
                                     </table:Column>
                                     <table:Column
                                         sortProperty="qtdGL1"
                                         filterProperty="qtdGL1"
-                                        headerSpan="9,2">
+                                        headerSpan="{matrixView>/Matrix/composicaoSpan2}">
                                         <table:multiLabels>
                                             <Label text="{i18n>Composicao}"/>
                                             <Label text="{matrixView>/Matrix/composicaoHeader/Col2}" textAlign="Center" width="100%"/>
                                             <Label text="{matrixView>/Matrix/composicaoHeader/Col2_1}" textAlign="Center" width="100%"/>
                                         </table:multiLabels>
                                         <table:template>
-                                            <Text text="{matrixView>qtdGL1}" wrapping="false"/>
+                                            <Text text="{matrixView>qtdGL1}" wrapping="false" textAlign="Center"/>
                                         </table:template>
                                     </table:Column>
                                     <table:Column
@@ -168,20 +170,20 @@
                                             <Label text="{matrixView>/Matrix/composicaoHeader/Col2_2}" textAlign="Center" width="100%"/>
                                         </table:multiLabels>
                                         <table:template>
-                                            <Text text="{matrixView>perMassa1}" wrapping="false"/>
+                                            <Text text="{matrixView>perMassa1}" wrapping="false" textAlign="Center"/>
                                         </table:template>
                                     </table:Column>
                                     <table:Column
                                         sortProperty="qtdGL2"
                                         filterProperty="qtdGL2"
-                                        headerSpan="9,2">
+                                        headerSpan="{matrixView>/Matrix/composicaoSpan2}">
                                         <table:multiLabels>
                                             <Label text="{i18n>Composicao}"/>
                                             <Label text="{matrixView>/Matrix/composicaoHeader/Col3}" textAlign="Center" width="100%"/>
                                             <Label text="{matrixView>/Matrix/composicaoHeader/Col3_1}" textAlign="Center" width="100%"/>
                                         </table:multiLabels>
                                         <table:template>
-                                            <Text text="{matrixView>qtdGL2}" wrapping="false"/>
+                                            <Text text="{matrixView>qtdGL2}" wrapping="false" textAlign="Center"/>
                                         </table:template>
                                     </table:Column>
                                     <table:Column
@@ -193,20 +195,20 @@
                                             <Label text="{matrixView>/Matrix/composicaoHeader/Col3_2}" textAlign="Center" width="100%"/>
                                         </table:multiLabels>
                                         <table:template>
-                                            <Text text="{matrixView>perMassa2}" wrapping="false"/>
+                                            <Text text="{matrixView>perMassa2}" wrapping="false" textAlign="Center"/>
                                         </table:template>
                                     </table:Column>
                                     <table:Column
                                         sortProperty="qtdGL3"
                                         filterProperty="qtdGL3"
-                                        headerSpan="9,2">
+                                        headerSpan="{matrixView>/Matrix/composicaoSpan2}">
                                         <table:multiLabels>
                                             <Label text="{i18n>Composicao}"/>
                                             <Label text="{matrixView>/Matrix/composicaoHeader/Col4}" textAlign="Center" width="100%"/>
                                             <Label text="{matrixView>/Matrix/composicaoHeader/Col4_1}" textAlign="Center" width="100%"/>
                                         </table:multiLabels>
                                         <table:template>
-                                            <Text text="{matrixView>qtdGL3}" wrapping="false"/>
+                                            <Text text="{matrixView>qtdGL3}" wrapping="false" textAlign="Center"/>
                                         </table:template>
                                     </table:Column>
                                     <table:Column
@@ -218,25 +220,27 @@
                                             <Label text="{matrixView>/Matrix/composicaoHeader/Col4_2}" textAlign="Center" width="100%"/>
                                         </table:multiLabels>
                                         <table:template>
-                                            <Text text="{matrixView>perMassa3}" wrapping="false"/>
+                                            <Text text="{matrixView>perMassa3}" wrapping="false" textAlign="Center"/>
                                         </table:template>
                                     </table:Column>  
                                     <table:Column
                                         sortProperty="qtdGL4"
                                         filterProperty="qtdGL4"
-                                        headerSpan="9,2">
+                                        headerSpan="{matrixView>/Matrix/composicaoSpan2}"
+                                        visible="{= (${matrixView>/Matrix/pragasHeader/Col5}) ? true : false }">
                                         <table:multiLabels>
                                             <Label text="{i18n>Composicao}"/>
                                             <Label text="{matrixView>/Matrix/composicaoHeader/Col5}" textAlign="Center" width="100%"/>
                                             <Label text="{matrixView>/Matrix/composicaoHeader/Col5_1}" textAlign="Center" width="100%"/>
                                         </table:multiLabels>
                                         <table:template>
-                                            <Text text="{matrixView>qtdGL4}" wrapping="false"/>
+                                            <Text text="{matrixView>qtdGL4}" wrapping="false" textAlign="Center"/>
                                         </table:template>
                                     </table:Column>
                                     <table:Column
                                         sortProperty="perMassa4"
-                                        filterProperty="perMassa4">
+                                        filterProperty="perMassa4"
+                                        visible="{= (${matrixView>/Matrix/pragasHeader/Col5}) ? true : false }">
                                         <table:multiLabels>
                                             <Label text="{i18n>Composicao}"/>
                                             <Label text="{matrixView>/Matrix/composicaoHeader/Col5}"/>
@@ -248,6 +252,155 @@
                                     </table:Column>    
                                 </table:columns>
                             </table:Table>
+                            <Title text=""/>
+                            <table:Table 
+                                id="MatrixPragas"
+                                ariaLabelledBy="{i18n>Pragas}"
+                                rows="{matrixView>/Matrix/pragasItem}"
+                                width="100%"
+                                visibleRowCount="{matrixView>/Matrix/pragasRows}"
+                                selectionMode="None"
+                                enableColumnFreeze="true"
+				                showColumnVisibilityMenu="true"
+                               >
+                                <table:columns>
+                                    <table:Column
+                                        width="6rem"
+                                        sortProperty="nomeCultura"
+                                        filterProperty="nomeCultura"
+                                        autoResizable="true"
+                                        sortOrder="Ascending"
+                                        headerSpan="{matrixView>/Matrix/pragasSpan1}">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Pragas}" textAlign="Center" width="100%"/>
+                                            <Label text=""/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col0}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>nomeCultura}" wrapping="false" textAlign="Center"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        width="11rem"
+                                        sortProperty="nomePragaCientifico"
+                                        filterProperty="nomePragaCientifico"
+                                        autoResizable="true"
+                                        sortOrder="Ascending"
+                                        headerSpan="{matrixView>/Matrix/pragasSpan1}">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Pragas}" textAlign="Center" width="100%"/>
+                                            <Label text=""/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col1}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>nomePragaCientifico}" wrapping="false" textAlign="Center"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="dose1"
+                                        filterProperty="dose1"
+                                        headerSpan="{matrixView>/Matrix/pragasSpan2}">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Pragas}"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col2}" textAlign="Center" width="100%"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col2_1}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>dose1}" wrapping="false" textAlign="Center"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="volApli1"
+                                        filterProperty="volApli1">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Pragas}"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col2}"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col2_2}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>volApli1}" wrapping="false" textAlign="Center"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="dose2"
+                                        filterProperty="dose2"
+                                        headerSpan="{matrixView>/Matrix/pragasSpan2}">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Pragas}"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col3}" textAlign="Center" width="100%"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col3_1}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>dose2}" wrapping="false" textAlign="Center"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="volApli2"
+                                        filterProperty="volApli2">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Pragas}"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col3}"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col3_2}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>volApli2}" wrapping="false" textAlign="Center"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="dose3"
+                                        filterProperty="dose3"
+                                        headerSpan="{matrixView>/Matrix/pragasSpan2}">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Pragas}"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col4}" textAlign="Center" width="100%"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col4_1}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>dose3}" wrapping="false" textAlign="Center"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="volApli3"
+                                        filterProperty="volApli3">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Pragas}"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col4}"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col4_2}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>volApli3}" wrapping="false" textAlign="Center"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="dose4"
+                                        filterProperty="dose4"
+                                        headerSpan="{matrixView>/Matrix/pragasSpan2}"
+                                        visible="{= (${matrixView>/Matrix/pragasHeader/Col5}) ? true : false }">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Pragas}"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col5}" textAlign="Center" width="100%"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col5_1}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>dose4}" wrapping="false" textAlign="Center"/>
+                                        </table:template>
+                                    </table:Column>
+                                    <table:Column
+                                        sortProperty="volApli4"
+                                        filterProperty="volApli4"
+                                        visible="{= (${matrixView>/Matrix/pragasHeader/Col5}) ? true : false }">
+                                        <table:multiLabels>
+                                            <Label text="{i18n>Pragas}"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col5}"/>
+                                            <Label text="{matrixView>/Matrix/pragasHeader/Col5_2}" textAlign="Center" width="100%"/>
+                                        </table:multiLabels>
+                                        <table:template>
+                                            <Text text="{matrixView>volApli4}" wrapping="false" textAlign="Center"/>
+                                        </table:template>
+                                    </table:Column>     
+                                </table:columns>
+                            </table:Table>
+                        </l:VerticalLayout>
                         </f:content>      
                     </f:SimpleForm>          
                 </Panel>  

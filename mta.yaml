@@ -102,6 +102,10 @@ modules:
       - agroproductdemoappmatrix.zip
       name: agroproductdemoappmatrix
       target-path: resources/
+    - artifacts:
+      - agroproductdemoappmatrixparam.zip
+      name: agroproductdemoappmatrixparam
+      target-path: resources/
     - artifacts:      
       - agroproductdemoapppragas.zip
       name: agroproductdemoapppragas
@@ -131,6 +135,17 @@ modules:
     - npm run build:cf
     supported-platforms: []
 
+# --------------------- HTML5 MODULE -------------------------
+- name: agroproductdemoappmatrixparam
+# ------------------------------------------------------------
+  type: html5
+  path: app/matrixparam
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm run build:cf
+    supported-platforms: []
 # --------------------- HTML5 MODULE -------------------------
 - name: agroproductdemoapppragas
 # ------------------------------------------------------------

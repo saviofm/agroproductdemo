@@ -9,19 +9,6 @@ sap.ui.define([
           cdProduto: "",
           nomeProduto: "",
           obsProduto: "",
-          Matrix: {
-            visible: false,
-            composicaoHeader: {},
-            composicaoItem: {},
-            composicaoRows: 0,
-            composicaoSpan1: "",
-            composicaoSpan2: "",
-            pragasHeader:   {},
-            pragasItem:     {},
-            pragasRows:     0,
-            pragasSpan1:    "",
-            pragasSpan2:    ""
-          },
           State: {
             cdProduto: {
               Enabled: true,

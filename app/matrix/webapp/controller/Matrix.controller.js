@@ -55,7 +55,7 @@ function (Controller, UIComponent, mMatrix, Fragment, Filter, FilterOperator) {
         /* =========================================================== */
 
         onValueHelpRequestCdProduto: function(oEvent){
-            let sInputValue = oEvent.getSource().getValue();
+            //let sInputValue = oEvent.getSource().getValue();
             
             this._oValueHelpCdProduto = null;
 
@@ -74,9 +74,9 @@ function (Controller, UIComponent, mMatrix, Fragment, Filter, FilterOperator) {
             this._oValueHelpDialogCdProduto.then(
                 function(oDialog){
 
-                    oDialog.getBinding("items").filter(this._filtersTableProdutos(sInputValue));
+                    //oDialog.getBinding("items").filter(this._filtersTableProdutos(sInputValue));
 
-                    oDialog.open(sInputValue);
+                    oDialog.open();
                 }.bind(this)
             );           
         },
@@ -112,7 +112,14 @@ function (Controller, UIComponent, mMatrix, Fragment, Filter, FilterOperator) {
                 oModel.obsProduto   = "";
                 oModel.Matrix.composicaoHeader = {};
                 oModel.Matrix.composicaoItem   = {};
-                oModel.Matrix.rows = 0;
+                oModel.Matrix.composicaoRows = 0;
+                oModel.Matrix.composicaoSpan1 = "",
+                oModel.Matrix.composicaoSpan2 = "",
+                oModel.Matrix.pragasHeader = {};
+                oModel.Matrix.pragasItem   = {};
+                oModel.Matrix.pragasRows = 0;
+                oModel.Matrix.pragasSpan1 = "",
+                oModel.Matrix.pragasSpan2 = "",
                 oModel.Matrix.visible = false;
             } else {
                 oModel.State.cdProduto.ValueState     = sap.ui.core.ValueState.None;
@@ -122,9 +129,16 @@ function (Controller, UIComponent, mMatrix, Fragment, Filter, FilterOperator) {
                 oModel.obsProduto   = "";
                 oModel.Matrix.composicaoHeader = {};
                 oModel.Matrix.composicaoItem   = {};
-                oModel.Matrix.rows = 0;
+                oModel.Matrix.composicaoRows = 0;
+                oModel.Matrix.composicaoSpan1 = "",
+                oModel.Matrix.composicaoSpan2 = "",
+                oModel.Matrix.pragasHeader = {};
+                oModel.Matrix.pragasItem   = {};
+                oModel.Matrix.pragasRows = 0;
+                oModel.Matrix.pragasSpan1 = "",
+                oModel.Matrix.pragasSpan2 = "",
                 oModel.Matrix.visible = false;
-                this.onValueHelpRequestCdProduto(oEvent);
+               
             }
             
             this.getModel("matrixView").refresh(true);
@@ -164,13 +178,19 @@ function (Controller, UIComponent, mMatrix, Fragment, Filter, FilterOperator) {
             return this.getModel("i18n").getResourceBundle();
         },
         _buildMatrix: async function(oModel){
-            debugger;
             let oMatrix = await this._getMatrix(oModel.ID);
             if (oMatrix) {
                 oModel.Matrix.composicaoHeader = oMatrix.composicaoHeader;
                 oModel.Matrix.composicaoItem   = oMatrix.composicaoItem;
-                oModel.Matrix.rows             = oMatrix.rows;
-                oModel.Matrix.visible = true;
+                oModel.Matrix.composicaoRows   = oMatrix.composicaoRows;
+                oModel.Matrix.composicaoSpan1  = oMatrix.composicaoSpan1,
+                oModel.Matrix.composicaoSpan2  = oMatrix.composicaoSpan2,
+                oModel.Matrix.pragasHeader     = oMatrix.pragasHeader;
+                oModel.Matrix.pragasItem       = oMatrix.pragasItem;
+                oModel.Matrix.pragasRows       = oMatrix.pragasRows;
+                oModel.Matrix.pragasSpan1      = oMatrix.pragasSpan1,
+                oModel.Matrix.pragasSpan2      = oMatrix.pragasSpan2,
+                oModel.Matrix.visible          = true;
             }
         },
         

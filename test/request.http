@@ -2,7 +2,7 @@
 @me = Authorization: Basic {{$processEnv USER}}:
 @basic = Authorization: Basic admin:admin
 ### ------------------------------------------------------------------------
-# Get Weight
+# Get Products
 GET  {{server}}/v2/catalog/ProdutosCrud 
 content-type: application/json
 {{me}}

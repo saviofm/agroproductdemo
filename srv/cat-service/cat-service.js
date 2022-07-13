@@ -96,10 +96,12 @@ class CatalogService extends cds.ApplicationService {
                             IDpraga:             pragas.praga.ID,
                             nomePraga:           pragas.praga.nomePraga,
                             nomePragaCientifico: pragas.praga.nomePragaCientifico,
-                            doseMin:             pragas.doseMin,
-                            doseMax:             pragas.doseMax,
-                            volApliTerrestreMin: pragas.volApliTerrestreMin,
-                            volApliTerrestreMax: pragas.volApliTerrestreMax
+                            dose:                (pragas.doseMin == pragas.doseMax ? pragas.doseMin : `${pragas.doseMin} - ${pragas.doseMax}`),
+                            volApli:             (pragas.volApliTerrestreMin == pragas.volApliTerrestreMax ? pragas.volApliTerrestreMin : `${pragas.volApliTerrestreMin} - ${pragas.volApliTerrestreMax}`)              
+                            //doseMin:             pragas.doseMin,
+                            //doseMax:             pragas.doseMax,
+                            //volApliTerrestreMin: pragas.volApliTerrestreMin,
+                            //volApliTerrestreMax: pragas.volApliTerrestreMax
                         })
                     };
                 }
@@ -172,16 +174,19 @@ class CatalogService extends cds.ApplicationService {
                         };
 
                         for (let pragas of material.pragas) {
+                            let dose = 
                             aCompTemp.pragas.push({ 
                                 IDcultura:           pragas.cultura.ID,
                                 nomeCultura:         pragas.cultura.nomeCultura,
                                 IDpraga:             pragas.praga.ID,
                                 nomePraga:           pragas.praga.nomePraga,
                                 nomePragaCientifico: pragas.praga.nomePragaCientifico,
-                                doseMin:             pragas.doseMin,
-                                doseMax:             pragas.doseMax,
-                                volApliTerrestreMin: pragas.volApliTerrestreMin,
-                                volApliTerrestreMax: pragas.volApliTerrestreMax
+                                dose:                (pragas.doseMin == pragas.doseMax ? pragas.doseMin : `${pragas.doseMin} - ${pragas.doseMax}`),
+                                volApli:             (pragas.volApliTerrestreMin == pragas.volApliTerrestreMax ? pragas.volApliTerrestreMin : `${pragas.volApliTerrestreMin} - ${pragas.volApliTerrestreMax}`)      
+                                //doseMin:             pragas.doseMin,
+                                //doseMax:             pragas.doseMax,
+                                //volApliTerrestreMin: pragas.volApliTerrestreMin,
+                                //volApliTerrestreMax: pragas.volApliTerrestreMax
                             })
                         };
                         aComp.push(aCompTemp);
@@ -190,7 +195,6 @@ class CatalogService extends cds.ApplicationService {
                 //Montando a Matriz de Composição
                 
                 let composicaoHeader = { 
-                        Col0: "ID Princípio Ativo" ,
                         Col1: "Princípio Ativo",
                         Col2: aMaterial[0].nomeProduto,
                         Col2_1: "Qtd(g/L)",   
@@ -230,10 +234,63 @@ class CatalogService extends cds.ApplicationService {
                     }
                 }
 
+                //Montando a Matriz de Pragas
+                
+                let pragasHeader = { 
+                        Col0: "Cultura" ,
+                        Col1: "Praga",
+                        Col2: aMaterial[0].nomeProduto,
+                        Col2_1: "Dose",   
+                        Col2_2: "Vol.Aplicação"  
+                    },
+                    aPragasItem = [];
+
+                    // Linhas dos itens principais
+                for (let pragas of aPragas) {
+                    aPragasItem.push({
+                        IDcultura:           pragas.IDcultura,
+                        nomeCultura:         pragas.nomeCultura,
+                        IDpraga:             pragas.IDpraga,
+                        nomePragaCientifico: pragas.nomePragaCientifico,
+                        dose1:                pragas.dose,
+                        volApli1:             pragas.volApli
+                    })
+                }
+
+
+                    index_header = 2;
+                    index = 1;
+                for (let comp of aComp) { //Lendo os materiais que irão ser comparados
+                    index++ ;
+                    index_header++;
+                        
+                    for (let pragasComp of comp.pragas){     
+                        for (let pragasItem of aPragasItem) {
+                            if (pragasItem.IDcultura == pragasComp.IDcultura && pragasItem.IDpraga == pragasComp.IDpraga) {
+                                //HEADER
+                                pragasHeader[`Col${index_header}`]   = comp.nomeProduto;
+                                pragasHeader[`Col${index_header}_1`] = "Dose";
+                                pragasHeader[`Col${index_header}_2`] = "Vol.Aplicação";
+                                //VALORES
+                                pragasItem[`dose${index}`]          = pragasComp.dose;
+                                pragasItem[`volApli${index}`]       = pragasComp.volApli;     
+                            }
+                        }
+                    }
+                }
+
+
                 return JSON.stringify({
                     composicaoHeader: composicaoHeader,
                     composicaoItem:   aComposicaoItem,
-                    rows: aComposicaoItem.length
+                    composicaoRows:   aComposicaoItem.length,
+                    composicaoSpan1:  `${Object.keys(composicaoHeader).length},1`,
+                    composicaoSpan2:  `${Object.keys(composicaoHeader).length},2`,
+                    pragasHeader:     pragasHeader,
+                    pragasItem:       aPragasItem,
+                    pragasRows:       aPragasItem.length,
+                    pragasSpan1:      `${Object.keys(pragasHeader).length},1`,
+                    pragasSpan2:      `${Object.keys(pragasHeader).length},2`,
                 });
                   
                 
